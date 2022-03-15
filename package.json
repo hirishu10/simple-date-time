@@ -1,0 +1,15 @@
+{
+  "name": "@hirishu10/simple-date-time",
+  "version": "1.0.0-alpha-5",
+  "description": "Simple and very helpful package to get the Date Time functionality",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "author": "Rishu Chowdhary <hi.10rishu@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  }
+}
