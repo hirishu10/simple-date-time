@@ -1,6 +1,6 @@
 {
   "name": "@hirishu10/simple-date-time",
-  "version": "1.0.0-alpha-5",
+  "version": "1.0.0",
   "description": "Simple and very helpful package to get the Date Time functionality",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,5 +11,28 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.6.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hirishu10/simple-date-time.git"
+  },
+  "keywords": [
+    "Date",
+    "Time",
+    "DateTime",
+    "Clock",
+    "node",
+    "react",
+    "react-native",
+    "vercel",
+    "hour",
+    "minute",
+    "second",
+    "am",
+    "pm"
+  ],
+  "bugs": {
+    "url": "https://github.com/hirishu10/simple-date-time/issues"
+  },
+  "homepage": "https://github.com/hirishu10/simple-date-time#readme"
 }

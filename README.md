@@ -203,6 +203,6 @@ Made with 🖤 by
 
 #### MIT License 📄
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hirishu10/react-native-customized-box/blob/main/LICENSE) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/hirishu10/simple-date-time/blob/main/LICENSE) file for details
 
 <!-- licesnce  -->
