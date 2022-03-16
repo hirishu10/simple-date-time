@@ -13,6 +13,7 @@ Now everyone can create full fletched `Clock` and `Date` `Time` service using th
 - [Getting started](#getting-started)
 - [Overview](#overview)
 - [Method and Props Configuration](#method-and-props-configuration)
+- [Feature Update](#feature-update)
 - [Author](#author)
 - [License](#license)
 <!-- Contents -->
@@ -182,6 +183,12 @@ Output: 10 October Friday 10:00:00am
 | `lowerOrUpperFlag`   | boolean | By Default False which return the Day, Month in lowerCase else Make True to return in UpperCase  |
 
 <!-- method and props  -->
+
+<!--  -->
+
+# Feature Update
+
+##### We are working on this for improving the package which helps everyone thanks 🙏🏻
 
 <!-- author  -->
 
