@@ -12,20 +12,5 @@ import { getCustomAmPm } from "./functions/getCustomAmPm";
 import { getCustomFullDateAndTimeWithAmPm } from "./functions/getCustomFullDateAndTimeWithAmPm";
 import { getCustomFullDateAndTimeWithAmPmIncludingSeconds } from "./functions/getCustomFullDateAndTimeWithAmPmIncludingSeconds";
 import { getCustomDTFormatter } from "./getCustomDTFormatter";
-
-export {
-  getCustomDayNameFull,
-  getCustomDayNameShort,
-  getCustomMonthNameFull,
-  getCustomMonthNameShort,
-  getCustomYear,
-  getCustomMonth,
-  getCustomDate,
-  getCustomHour,
-  getCustomMinute,
-  getCustomSecond,
-  getCustomAmPm,
-  getCustomFullDateAndTimeWithAmPm,
-  getCustomFullDateAndTimeWithAmPmIncludingSeconds,
-  getCustomDTFormatter,
-};
+export { getCustomDayNameFull, getCustomDayNameShort, getCustomMonthNameFull, getCustomMonthNameShort, getCustomYear, getCustomMonth, getCustomDate, getCustomHour, getCustomMinute, getCustomSecond, getCustomAmPm, getCustomFullDateAndTimeWithAmPm, getCustomFullDateAndTimeWithAmPmIncludingSeconds, getCustomDTFormatter, };
+//# sourceMappingURL=index.d.ts.map

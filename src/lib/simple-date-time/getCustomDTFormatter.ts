@@ -1,16 +1,42 @@
 /**
  * 
- * @param dateValue default current date will be displayed other enter datevalue unix number for date.
+ * @param dateValue default current date will be displayed otherwise enter datevalue unix number for paarticular date.
  * @returns `String`
  */
 
 export const getCustomDTFormatter = (dateValue?: number) => {
 
+  type typeOfInsertCharacters = {
+    yy?: string;
+    yyyy?: string;
+    M?: string;
+    Mu?: string;
+    Mp?: string;
+    MM?: string;
+    MMu?: string;
+    MMp?: string;
+    mt?: string;
+    dt?: string;
+    d?: string;
+    du?: string;
+    dp?: string;
+    dd?: string;
+    ddu?: string;
+    ddp?: string;
+    m?: string;
+    h?: string;
+    s?: string;
+    ap?: string;
+    apu?: string;
+    "h:m:s"?: string;
+    "h:m"?: string;
+  };
+
   const d = dateValue === undefined ? new Date() : dateValue === null ? new Date() : new Date(dateValue);
 
   /**
    * 
-   * @param formatVal Format to show date time value.
+   * @param formatValue Format to show date time value.
    * @returns `String` Return formatted timeStamp
    * 
    * 
@@ -21,6 +47,8 @@ export const getCustomDTFormatter = (dateValue?: number) => {
    * Month : M => oct, Mu => OCT, Mp => Oct  |  MM => october, MMu => OCTOBER, MMp => October,
    * 
    * Day : d => fri, du => FRI, dp => Fri  |  dd => friday, ddu => FRIDAY, ddp => Friday,
+   * 
+   * Month In Number : mt => 10
    * 
    * Date : dt => 10
    * 
@@ -33,18 +61,20 @@ export const getCustomDTFormatter = (dateValue?: number) => {
    * am/pm : ap => am or pm, apu => AM or PM,
    *
    */
-  function format(formatVal: string) {
-    const flagData = formatVal.split(" ");
+  function format(formatValue: string,
+    insertCharacters?: typeOfInsertCharacters
+  ) {
+    const flagData = formatValue.split(" ");
     let customTimeStamp = "";
     flagData?.forEach((eachItem) => {
-      customTimeStamp = customTimeStamp + " " + checkFlag(eachItem);
+      customTimeStamp = customTimeStamp + checkFlag(eachItem, insertCharacters);
     })
     return customTimeStamp;
   }
 
-  const getCustomYear = (caseFlag: "yy" | "yyyy") => {
+  const getCustomYear = (yearFlag: "yy" | "yyyy") => {
     const year = String(d.getFullYear());
-    return caseFlag === "yy" ? year.substring(2) : year
+    return yearFlag === "yy" ? year.substring(2) : year
   };
 
   const getCustomDate = (changeToStringFlag?: boolean | undefined | null) => {
@@ -70,6 +100,11 @@ export const getCustomDTFormatter = (dateValue?: number) => {
   const getCustomAmPm = (caseFlag?: "u" | undefined | null) => {
     const amPm = d.getHours() >= 12 ? "pm" : "am";
     return caseFlag === "u" ? amPm.toUpperCase() : amPm;
+  };
+
+  const getCustomMonth = (changeToStringFlag?: boolean | undefined | null) => {
+    const monthN = d.getMonth();
+    return changeToStringFlag ? String(monthN + 1) : monthN + 1;
   };
 
   const getCustomMonthNameShort = (caseFlag?: "u" | "p" | undefined | null) => {
@@ -176,52 +211,55 @@ export const getCustomDTFormatter = (dateValue?: number) => {
     }
   };
 
-  const checkFlag = (flagValue: string) => {
+  const checkFlag = (flagValue: string,
+    lastChar?: typeOfInsertCharacters) => {
     switch (flagValue) {
       case "yy":
-        return getCustomYear("yy");
+        return `${getCustomYear("yy")}${lastChar?.yy != undefined ? lastChar?.yy : " "}`;
       case "yyyy":
-        return getCustomYear("yyyy");
+        return `${getCustomYear("yyyy")}${lastChar?.yyyy != undefined ? lastChar?.yyyy : " "}`;
       case "M":
-        return getCustomMonthNameShort();
+        return `${getCustomMonthNameShort()}${lastChar?.M != undefined ? lastChar?.M : " "}`;
       case "Mu":
-        return getCustomMonthNameShort("u");
+        return `${getCustomMonthNameShort("u")}${lastChar?.Mu != undefined ? lastChar?.Mu : " "}`;
       case "Mp":
-        return getCustomMonthNameShort("p");
+        return `${getCustomMonthNameShort("p")}${lastChar?.Mp != undefined ? lastChar?.Mp : " "}`;
       case "MM":
-        return getCustomMonthNameFull();
+        return `${getCustomMonthNameFull()}${lastChar?.MM != undefined ? lastChar?.MM : " "}`;
       case "MMu":
-        return getCustomMonthNameFull("u");
+        return `${getCustomMonthNameFull("u")}${lastChar?.MMu != undefined ? lastChar?.MMu : " "}`;
       case "MMp":
-        return getCustomMonthNameFull("p");
+        return `${getCustomMonthNameFull("p")}${lastChar?.MMp != undefined ? lastChar?.MMp : " "}`;
+      case "mt":
+        return `${getCustomMonth(true)}${lastChar?.mt != undefined ? lastChar?.mt : " "}`;
       case "dt":
-        return getCustomDate();
+        return `${getCustomDate()}${lastChar?.dt != undefined ? lastChar?.dt : " "}`;
       case "d":
-        return getCustomDayNameShort();
+        return `${getCustomDayNameShort()}${lastChar?.d != undefined ? lastChar?.d : " "}`;
       case "du":
-        return getCustomDayNameShort("u");
+        return `${getCustomDayNameShort("u")}${lastChar?.du != undefined ? lastChar?.du : " "}`;
       case "dp":
-        return getCustomDayNameShort("p");
+        return `${getCustomDayNameShort("p")}${lastChar?.dp != undefined ? lastChar?.dp : " "}`;
       case "dd":
-        return getCustomDayNameFull();
+        return `${getCustomDayNameFull()}${lastChar?.dd != undefined ? lastChar?.dd : " "}`;
       case "ddu":
-        return getCustomDayNameFull("u");
+        return `${getCustomDayNameFull("u")}${lastChar?.ddu != undefined ? lastChar?.ddu : " "}`;
       case "ddp":
-        return getCustomDayNameFull("p");
+        return `${getCustomDayNameFull("p")}${lastChar?.ddp != undefined ? lastChar?.ddp : " "}`;
       case "m":
-        return getCustomMinute(true);
+        return `${getCustomMinute(true)}${lastChar?.m != undefined ? lastChar?.m : " "}`;
       case "h":
-        return getCustomHour();
+        return `${getCustomHour()}${lastChar?.h != undefined ? lastChar?.h : " "}`;
       case "s":
-        return getCustomSecond(true);
+        return `${getCustomSecond(true)}${lastChar?.s != undefined ? lastChar?.s : " "}`;
       case "ap":
-        return getCustomAmPm();
+        return `${getCustomAmPm()}${lastChar?.ap != undefined ? lastChar?.ap : " "}`;
       case "apu":
-        return getCustomAmPm("u");
+        return `${getCustomAmPm("u")}${lastChar?.apu != undefined ? lastChar?.apu : " "}`;
       case "h:m:s":
-        return `${getCustomHour()}:${getCustomMinute(true)}:${getCustomSecond(true)}`;
+        return `${getCustomHour()}:${getCustomMinute(true)}:${getCustomSecond(true)}${lastChar?.["h:m:s"] != undefined ? lastChar?.["h:m:s"] : " "}`;
       case "h:m":
-        return `${getCustomHour()}:${getCustomMinute(true)}`;
+        return `${getCustomHour()}:${getCustomMinute(true)}${lastChar?.["h:m"] != undefined ? lastChar?.["h:m"] : " "}`;
       default:
         return "";
     }

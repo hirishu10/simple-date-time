@@ -1,10 +1,12 @@
 node_modules/
 package-lock
+package-lock.json
 tsconfig
 yarn.lock
 src/
 src/index.ts
 
+/src
 tsconfig.json
 
 .expo/
